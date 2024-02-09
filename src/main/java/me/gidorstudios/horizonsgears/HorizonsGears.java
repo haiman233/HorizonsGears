@@ -1,7 +1,11 @@
 package me.gidorstudios.horizonsgears;
 
+import io.github.thebusybiscuit.slimefun4.api.items.ItemHandler;
+import io.github.thebusybiscuit.slimefun4.api.researches.Research;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -20,23 +24,48 @@ public class HorizonsGears extends JavaPlugin implements SlimefunAddon {
         // Read something from your config.yml
         Config cfg = new Config(this);
 
-        NamespacedKey categoryId = new NamespacedKey(this, "horizons_gears");
-        CustomItemStack categoryItem = new CustomItemStack(Material.NETHERITE_SWORD, "&3Category for the Horizons weapons and armour pack.");
+        NamespacedKey categoryId = new NamespacedKey(this, "a_horizons_gears");
+        CustomItemStack categoryItem = new CustomItemStack(Material.NETHERITE_SWORD, "&bHorizon&8Reborned &3Pack.");
 
         ItemGroup itemGroup = new ItemGroup(categoryId, categoryItem);
 
-        // The custom item for our SlimefunItem
-        SlimefunItemStack itemStack = new SlimefunItemStack("HORIZON_SWORD", Material.DIAMOND_SWORD, "&bHorizon Sword", "", "&7A powerful sword enchanted deep in the sea.");
+        SlimefunItemStack CrystalitemStack = new SlimefunItemStack("HORIZON_CRYSTAL", Material.DIAMOND, "&7Horizon Crystal", "", "&3A shiny gem created by insane pressures.");
 
-        // A 3x3 shape representing our recipe
-        ItemStack[] recipe = {
-                new ItemStack(Material.DIAMOND),    null,                               new ItemStack(Material.DIAMOND),
-                null,                               SlimefunItems.CARBONADO,            null,
-                new ItemStack(Material.DIAMOND),    null,                               new ItemStack(Material.DIAMOND)
+        // The custom item for our SlimefunItem
+        SlimefunItemStack HorizonSworditemStack = new SlimefunItemStack("HORIZON_SWORD", Material.DIAMOND_SWORD, "&bHorizon &3Sword", "", "&7A powerful sword enchanted deep in the sea.");
+
+        HorizonSworditemStack.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 7);
+        HorizonSworditemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 7);
+        HorizonSworditemStack.addUnsafeEnchantment(Enchantment.FIRE_ASPECT, 2);
+
+
+        ItemStack[] cyrstalRecipe = {
+                SlimefunItems.SYNTHETIC_DIAMOND,   new ItemStack(Material.DIAMOND),      SlimefunItems.CARBON_CHUNK,
+                null,                               null,                                      null,
+                null,                              null,                                       null
         };
 
-        SlimefunItem sfItem = new SlimefunItem(itemGroup, itemStack, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
+        // A 3x3 shape representing our recipe
+        ItemStack[] swordRecipe = {
+                null,                                CrystalitemStack,               null,
+                null,                               CrystalitemStack,                null,
+                null,                              new ItemStack(Material.STICK),      null
+        };
+
+        SlimefunItem sfCItem = new SlimefunItem(itemGroup, CrystalitemStack, RecipeType.PRESSURE_CHAMBER, cyrstalRecipe);
+        sfCItem.register(this);
+        SlimefunItem sfItem = new SlimefunItem(itemGroup, HorizonSworditemStack, RecipeType.ENHANCED_CRAFTING_TABLE, swordRecipe);
         sfItem.register(this);
+
+        NamespacedKey researchKey = new NamespacedKey(this, "crystal_research");
+        Research research = new Research(researchKey, 700, "Unlocks the horizon crystal.", 10);
+        research.addItems(CrystalitemStack);
+        research.register();
+
+        NamespacedKey researchKeySword = new NamespacedKey(this, "hsword_research");
+        Research researchSword = new Research(researchKeySword, 701, "Unlocks the horizon sword.", 15);
+        researchSword.addItems(HorizonSworditemStack);
+        researchSword.register();
         // Our item is now registered
     }
 
