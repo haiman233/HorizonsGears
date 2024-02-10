@@ -110,17 +110,17 @@ public class HorizonsGears extends JavaPlugin implements SlimefunAddon {
         sfItem.register(this);
 
         NamespacedKey researchKey = new NamespacedKey(this, "crystal_research");
-        Research research = new Research(researchKey, 700, "Unlocks the horizon crystal.", 10);
+        Research research = new Research(researchKey, 700, "Horizon Resources", 10);
         research.addItems(CrystalitemStack);
         research.register();
 
         NamespacedKey researchKeySword = new NamespacedKey(this, "hsword_research");
-        Research researchSword = new Research(researchKeySword, 701, "Unlocks the horizon sword.", 15);
+        Research researchSword = new Research(researchKeySword, 701, "Horizon Weapons", 15);
         researchSword.addItems(HorizonSworditemStack);
         researchSword.register();
 
         NamespacedKey researchKeyArmour = new NamespacedKey(this, "harmour_research");
-        Research researchArmour = new Research(researchKeyArmour, 702, "Unlocks the horizon sword.", 50);
+        Research researchArmour = new Research(researchKeyArmour, 702, "Horizon Protections", 50);
         researchArmour.addItems(HorizonHelmetitemStack);
         researchArmour.addItems(HorizonChestitemStack);
         researchArmour.addItems(HorizonLeggingsitemStack);
