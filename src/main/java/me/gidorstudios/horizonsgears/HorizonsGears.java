@@ -54,8 +54,40 @@ public class HorizonsGears extends JavaPlugin implements SlimefunAddon {
         HorizonBootsitemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 7);
         HorizonBootsitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_FALL, 2);
 
-        ItemStack[] cyrstalRecipe = {
-                SlimefunItems.SYNTHETIC_DIAMOND,   new ItemStack(Material.DIAMOND),      SlimefunItems.CARBON_CHUNK,
+        SlimefunItemStack RebirthCrystalitemStack = new SlimefunItemStack("REBIRTH_CRYSTAL", Material.NETHERITE_INGOT, "&8Rebirth Crystal", "", "&799% Pure Netherite, which only a master smelter could ever achieve.");
+
+        SlimefunItemStack RebirthSworditemStack = new SlimefunItemStack("REBIRTH_SWORD", Material.NETHERITE_SWORD, "&7Rebirth &8Sword", "", "&4Mastercrafted");
+        RebirthSworditemStack.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 7);
+        RebirthSworditemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 7);
+        RebirthSworditemStack.addUnsafeEnchantment(Enchantment.FIRE_ASPECT, 2);
+
+        SlimefunItemStack RebirthHelmetitemStack = new SlimefunItemStack("REBIRTH_HELMET", Material.DIAMOND_HELMET, "&7Rebirth &8Helmet", "", "&4Mastercrafted");
+        RebirthHelmetitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 7);
+        RebirthHelmetitemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 7);
+        RebirthHelmetitemStack.addUnsafeEnchantment(Enchantment.THORNS, 2);
+
+        SlimefunItemStack RebirthChestitemStack = new SlimefunItemStack("REBIRTH_CHESTPLATE", Material.NETHERITE_CHESTPLATE, "&7Rebirth &8Chestplate", "", "&4Mastercrafted");
+        RebirthChestitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 7);
+        RebirthChestitemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 7);
+
+        SlimefunItemStack RebirthLeggingsitemStack = new SlimefunItemStack("REBIRTH_LEGGINGS", Material.NETHERITE_LEGGINGS, "&7Rebirth &8Leggings", "", "&4Mastercrafted");
+        RebirthLeggingsitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 7);
+        RebirthLeggingsitemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 7);
+
+        SlimefunItemStack RebirthBootsitemStack = new SlimefunItemStack("REBIRTH_BOOTS", Material.NETHERITE_BOOTS, "&7Rebirth &8Boots", "", "&4Mastercrafted");
+        RebirthBootsitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 7);
+        RebirthBootsitemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 7);
+        RebirthBootsitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_FALL, 2);
+
+        ItemStack[] rebirthRecipe = {
+                new ItemStack(Material.OBSIDIAN),   new ItemStack(Material.NETHERITE_INGOT),     new ItemStack(Material.OBSIDIAN),
+                new ItemStack(Material.NETHERITE_INGOT),           CrystalitemStack,                      SlimefunItems.DAMASCUS_STEEL_INGOT,
+                new ItemStack(Material.OBSIDIAN),             new ItemStack(Material.NETHERITE_INGOT),      new ItemStack(Material.OBSIDIAN),
+        };
+
+
+        ItemStack[] crystalRecipe = {
+                SlimefunItems.SYNTHETIC_DIAMOND,   new ItemStack(Material.DIAMOND),      SlimefunItems.CARBON,
                 SlimefunItems.CARBONADO,           SlimefunItems.SYNTHETIC_SAPPHIRE,     SlimefunItems.DAMASCUS_STEEL_INGOT,
                 null,                              null,                                 null
         };
@@ -84,13 +116,44 @@ public class HorizonsGears extends JavaPlugin implements SlimefunAddon {
                 CrystalitemStack,                  null,                                       CrystalitemStack
         };
 
+        ItemStack[] RbootsRecipe = {
+                null,                              RebirthCrystalitemStack,                   null,
+                RebirthCrystalitemStack,           HorizonBootsitemStack,            RebirthCrystalitemStack,
+                null,                              RebirthCrystalitemStack,               null
+        };
+
+        ItemStack[] RleggRecipe = {
+                null,                              RebirthCrystalitemStack,                   null,
+                RebirthCrystalitemStack,           HorizonLeggingsitemStack,            RebirthCrystalitemStack,
+                null,                              RebirthCrystalitemStack,               null
+        };
+
+        ItemStack[] RchestRecipe = {
+                null,                              RebirthCrystalitemStack,                   null,
+                RebirthCrystalitemStack,           HorizonChestitemStack,            RebirthCrystalitemStack,
+                null,                              RebirthCrystalitemStack,               null
+        };
+
+        ItemStack[] RhelmetRecipe = {
+                null,                              RebirthCrystalitemStack,                   null,
+                RebirthCrystalitemStack,           HorizonHelmetitemStack,            RebirthCrystalitemStack,
+                null,                              RebirthCrystalitemStack,               null
+        };
+
         // A 3x3 shape representing our recipe
         ItemStack[] swordRecipe = {
                 null,                                CrystalitemStack,               null,
                 null,                               CrystalitemStack,                null,
-                null,                              new ItemStack(Material.STICK),      null
+                null,                              new ItemStack(Material.BLAZE_ROD),      null
         };
 
+        ItemStack[] RswordRecipe = {
+                null,                                RebirthCrystalitemStack,               null,
+                null,                               RebirthCrystalitemStack,                null,
+                null,                              HorizonSworditemStack,                   null
+        };
+
+        // horizon items
         SlimefunItem sfHItem = new SlimefunItem(itemGroup, HorizonHelmetitemStack, RecipeType.ENHANCED_CRAFTING_TABLE, helmetRecipe);
         sfHItem.register(this);
 
@@ -103,16 +166,41 @@ public class HorizonsGears extends JavaPlugin implements SlimefunAddon {
         SlimefunItem sfBItem = new SlimefunItem(itemGroup, HorizonBootsitemStack, RecipeType.ENHANCED_CRAFTING_TABLE, bootsRecipe);
         sfBItem.register(this);
 
-        SlimefunItem sfCItem = new SlimefunItem(itemGroup, CrystalitemStack, RecipeType.PRESSURE_CHAMBER, cyrstalRecipe);
+        SlimefunItem sfCItem = new SlimefunItem(itemGroup, CrystalitemStack, RecipeType.COMPRESSOR, crystalRecipe);
         sfCItem.register(this);
 
         SlimefunItem sfItem = new SlimefunItem(itemGroup, HorizonSworditemStack, RecipeType.ENHANCED_CRAFTING_TABLE, swordRecipe);
         sfItem.register(this);
 
+        // rebirth items
+
+        SlimefunItem RsfHItem = new SlimefunItem(itemGroup, RebirthHelmetitemStack, RecipeType.ARMOR_FORGE, RhelmetRecipe);
+        RsfHItem.register(this);
+
+        SlimefunItem RsfChItem = new SlimefunItem(itemGroup, RebirthChestitemStack, RecipeType.ARMOR_FORGE,  RchestRecipe);
+        RsfChItem.register(this);
+
+        SlimefunItem RsfLItem = new SlimefunItem(itemGroup, RebirthLeggingsitemStack, RecipeType.ARMOR_FORGE, RleggRecipe);
+        RsfLItem.register(this);
+
+        SlimefunItem RsfBItem = new SlimefunItem(itemGroup, RebirthBootsitemStack, RecipeType.ARMOR_FORGE, RbootsRecipe);
+        RsfBItem.register(this);
+
+        SlimefunItem RsfCItem = new SlimefunItem(itemGroup, RebirthCrystalitemStack, RecipeType.COMPRESSOR, rebirthRecipe);
+        RsfCItem.register(this);
+
+        SlimefunItem RsfItem = new SlimefunItem(itemGroup, RebirthSworditemStack, RecipeType.MAGIC_WORKBENCH, RswordRecipe);
+        RsfItem.register(this);
+
         NamespacedKey researchKey = new NamespacedKey(this, "crystal_research");
         Research research = new Research(researchKey, 700, "Horizon Resources", 10);
         research.addItems(CrystalitemStack);
         research.register();
+
+        NamespacedKey researchKeyR = new NamespacedKey(this, "crystal_research_2");
+        Research researchR = new Research(researchKeyR, 703, "Better Horizon Resources", 40);
+        researchR.addItems(RebirthCrystalitemStack);
+        researchR.register();
 
         NamespacedKey researchKeySword = new NamespacedKey(this, "hsword_research");
         Research researchSword = new Research(researchKeySword, 701, "Horizon Weapons", 15);
@@ -126,6 +214,14 @@ public class HorizonsGears extends JavaPlugin implements SlimefunAddon {
         researchArmour.addItems(HorizonLeggingsitemStack);
         researchArmour.addItems(HorizonBootsitemStack);
         researchArmour.register();
+
+        NamespacedKey researchKeyArmourR = new NamespacedKey(this, "rarmour_research");
+        Research researchArmourR = new Research(researchKeyArmourR, 704, "Horizon Protections II", 75);
+        researchArmourR.addItems(RebirthHelmetitemStack);
+        researchArmourR.addItems(RebirthChestitemStack);
+        researchArmourR.addItems(RebirthLeggingsitemStack);
+        researchArmourR.addItems(RebirthBootsitemStack);
+        researchArmourR.register();
         // Our item is now registered
     }
 
