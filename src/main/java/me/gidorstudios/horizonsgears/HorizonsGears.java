@@ -53,7 +53,7 @@ public class HorizonsGears extends JavaPlugin implements SlimefunAddon {
         HorizonBootsitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 7);
         HorizonBootsitemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 7);
         HorizonBootsitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_FALL, 2);
-
+// rebirth stuff
         SlimefunItemStack RebirthCrystalitemStack = new SlimefunItemStack("REBIRTH_CRYSTAL", Material.NETHERITE_INGOT, "&8Rebirth Crystal", "", "&799% Pure Netherite, which only a master smelter could ever achieve.");
 
         SlimefunItemStack RebirthSworditemStack = new SlimefunItemStack("REBIRTH_SWORD", Material.NETHERITE_SWORD, "&7Rebirth &8Sword", "", "&4Mastercrafted");
@@ -61,7 +61,7 @@ public class HorizonsGears extends JavaPlugin implements SlimefunAddon {
         RebirthSworditemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 7);
         RebirthSworditemStack.addUnsafeEnchantment(Enchantment.FIRE_ASPECT, 2);
 
-        SlimefunItemStack RebirthHelmetitemStack = new SlimefunItemStack("REBIRTH_HELMET", Material.DIAMOND_HELMET, "&7Rebirth &8Helmet", "", "&4Mastercrafted");
+        SlimefunItemStack RebirthHelmetitemStack = new SlimefunItemStack("REBIRTH_HELMET", Material.NETHERITE_HELMET, "&7Rebirth &8Helmet", "", "&4Mastercrafted");
         RebirthHelmetitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 7);
         RebirthHelmetitemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 7);
         RebirthHelmetitemStack.addUnsafeEnchantment(Enchantment.THORNS, 2);
