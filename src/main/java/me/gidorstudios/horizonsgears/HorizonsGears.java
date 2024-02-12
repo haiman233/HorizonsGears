@@ -225,7 +225,7 @@ public class HorizonsGears extends JavaPlugin implements SlimefunAddon {
 
         NamespacedKey RresearchKeySword = new NamespacedKey(this, "rsword_research");
         Research RresearchSword = new Research(RresearchKeySword, 705, "Horizon Weapons II", 35);
-        RresearchSword.addItems(HorizonSworditemStack);
+        RresearchSword.addItems(RebirthSworditemStack);
         RresearchSword.register();
         // Our item is now registered
     }
