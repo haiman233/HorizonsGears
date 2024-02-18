@@ -1,5 +1,6 @@
 package me.gidorstudios.horizonsgears;
 
+import me.gidorstudios.horizonsgears.ArmorEffectListener.*;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemHandler;
 import io.github.thebusybiscuit.slimefun4.api.researches.Research;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
@@ -18,7 +19,7 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.config.Config;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 
 public class HorizonsGears extends JavaPlugin implements SlimefunAddon {
-
+    private ArmorEffectListener armorEffectListener;
     @Override
     public void onEnable() {
         // Read something from your config.yml
@@ -32,63 +33,61 @@ public class HorizonsGears extends JavaPlugin implements SlimefunAddon {
         SlimefunItemStack CrystalitemStack = new SlimefunItemStack("HORIZON_CRYSTAL", Material.DIAMOND, "&7Horizon Crystal", "", "&3A shiny gem created by insane pressures.");
 
         SlimefunItemStack HorizonSworditemStack = new SlimefunItemStack("HORIZON_SWORD", Material.DIAMOND_SWORD, "&bHorizons &3Sword", "", "&7A powerful sword enchanted deep in the sea.");
-        HorizonSworditemStack.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 7);
-        HorizonSworditemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 7);
-        HorizonSworditemStack.addUnsafeEnchantment(Enchantment.FIRE_ASPECT, 2);
+        HorizonSworditemStack.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 6);
+        HorizonSworditemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 5);
 
         SlimefunItemStack HorizonHelmetitemStack = new SlimefunItemStack("HORIZON_HELMET", Material.DIAMOND_HELMET, "&bHorizons &3Helmet", "", "&7A powerful helmet crafted deep within the nether.");
-        HorizonHelmetitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 7);
-        HorizonHelmetitemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 7);
-        HorizonHelmetitemStack.addUnsafeEnchantment(Enchantment.THORNS, 2);
+        HorizonHelmetitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 6);
+        HorizonHelmetitemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 5);
 
         SlimefunItemStack HorizonChestitemStack = new SlimefunItemStack("HORIZON_CHESTPLATE", Material.DIAMOND_CHESTPLATE, "&bHorizons &3Chestplate", "", "&7A powerful chestplate crafted deep within the nether.");
-        HorizonChestitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 7);
-        HorizonChestitemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 7);
+        HorizonChestitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 6);
+        HorizonChestitemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 4);
 
         SlimefunItemStack HorizonLeggingsitemStack = new SlimefunItemStack("HORIZON_LEGGINGS", Material.DIAMOND_LEGGINGS, "&bHorizons &3Leggings", "", "&7Powerful leggings crafted deep within the nether.");
-        HorizonLeggingsitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 7);
-        HorizonLeggingsitemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 7);
+        HorizonLeggingsitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 6);
+        HorizonLeggingsitemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 4);
 
         SlimefunItemStack HorizonBootsitemStack = new SlimefunItemStack("HORIZON_BOOTS", Material.DIAMOND_BOOTS, "&bHorizons &3Boots", "", "&7Powerful boots crafted deep within the nether.");
-        HorizonBootsitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 7);
-        HorizonBootsitemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 7);
-        HorizonBootsitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_FALL, 2);
+        HorizonBootsitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 6);
+        HorizonBootsitemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 4);
+
 // rebirth stuff
-        SlimefunItemStack RebirthCrystalitemStack = new SlimefunItemStack("REBIRTH_CRYSTAL", Material.NETHERITE_INGOT, "&8Rebirth Crystal", "", "&799% Pure Netherite, which only a master smelter could ever achieve.");
+        SlimefunItemStack RebirthCrystalitemStack = new SlimefunItemStack("REBIRTH_CRYSTAL", Material.NETHERITE_INGOT, "&8Reborned Netherite Ingot", "", "&799% Pure Netherite, which only a master smelter could ever achieve.");
 
         SlimefunItemStack RebirthSworditemStack = new SlimefunItemStack("REBIRTH_SWORD", Material.NETHERITE_SWORD, "&7Rebirth &8Sword", "", "&4Mastercrafted");
-        RebirthSworditemStack.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 7);
-        RebirthSworditemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 7);
-        RebirthSworditemStack.addUnsafeEnchantment(Enchantment.FIRE_ASPECT, 2);
+        RebirthSworditemStack.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 6);
+        RebirthSworditemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 5);
+        RebirthSworditemStack.addUnsafeEnchantment(Enchantment.FIRE_ASPECT, 1);
 
         SlimefunItemStack RebirthHelmetitemStack = new SlimefunItemStack("REBIRTH_HELMET", Material.NETHERITE_HELMET, "&7Rebirth &8Helmet", "", "&4Mastercrafted");
-        RebirthHelmetitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 7);
-        RebirthHelmetitemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 7);
-        RebirthHelmetitemStack.addUnsafeEnchantment(Enchantment.THORNS, 2);
+        RebirthHelmetitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 5);
+        RebirthHelmetitemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 5);
+        RebirthHelmetitemStack.addUnsafeEnchantment(Enchantment.THORNS, 1);
 
         SlimefunItemStack RebirthChestitemStack = new SlimefunItemStack("REBIRTH_CHESTPLATE", Material.NETHERITE_CHESTPLATE, "&7Rebirth &8Chestplate", "", "&4Mastercrafted");
-        RebirthChestitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 7);
-        RebirthChestitemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 7);
+        RebirthChestitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 6);
+        RebirthChestitemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 5);
 
         SlimefunItemStack RebirthLeggingsitemStack = new SlimefunItemStack("REBIRTH_LEGGINGS", Material.NETHERITE_LEGGINGS, "&7Rebirth &8Leggings", "", "&4Mastercrafted");
-        RebirthLeggingsitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 7);
-        RebirthLeggingsitemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 7);
+        RebirthLeggingsitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 6);
+        RebirthLeggingsitemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 5);
 
         SlimefunItemStack RebirthBootsitemStack = new SlimefunItemStack("REBIRTH_BOOTS", Material.NETHERITE_BOOTS, "&7Rebirth &8Boots", "", "&4Mastercrafted");
-        RebirthBootsitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 7);
-        RebirthBootsitemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 7);
-        RebirthBootsitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_FALL, 2);
+        RebirthBootsitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 6);
+        RebirthBootsitemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 5);
+        RebirthBootsitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_FALL, 1);
 
         ItemStack[] rebirthRecipe = {
                 new ItemStack(Material.OBSIDIAN),   new ItemStack(Material.NETHERITE_INGOT),     new ItemStack(Material.OBSIDIAN),
-                new ItemStack(Material.NETHERITE_INGOT),           CrystalitemStack,                      SlimefunItems.DAMASCUS_STEEL_INGOT,
+                new ItemStack(Material.NETHERITE_INGOT),           CrystalitemStack,                      new ItemStack(Material.NETHERITE_INGOT),
                 new ItemStack(Material.OBSIDIAN),             new ItemStack(Material.NETHERITE_INGOT),      new ItemStack(Material.OBSIDIAN),
         };
 
 
         ItemStack[] crystalRecipe = {
-                SlimefunItems.SYNTHETIC_DIAMOND,   new ItemStack(Material.DIAMOND),      SlimefunItems.CARBON,
-                SlimefunItems.CARBONADO,           SlimefunItems.SYNTHETIC_SAPPHIRE,     SlimefunItems.DAMASCUS_STEEL_INGOT,
+                SlimefunItems.COMPRESSED_CARBON,   new ItemStack(Material.DIAMOND),      SlimefunItems.CARBON,
+                SlimefunItems.CARBONADO,           SlimefunItems.SYNTHETIC_SAPPHIRE,     SlimefunItems.STEEL_INGOT,
                 null,                              null,                                 null
         };
 
@@ -228,6 +227,10 @@ public class HorizonsGears extends JavaPlugin implements SlimefunAddon {
         RresearchSword.addItems(RebirthSworditemStack);
         RresearchSword.register();
         // Our item is now registered
+
+       // armorEffectListener = new ArmorEffectListener(this);
+        //armorEffectListener.startScheduler();
+
     }
 
     @Override
