@@ -1,20 +1,18 @@
 package me.gidorstudios.horizonsgears;
 
-import me.gidorstudios.horizonsgears.ArmorEffectListener.*;
-import io.github.thebusybiscuit.slimefun4.api.items.ItemHandler;
-import io.github.thebusybiscuit.slimefun4.api.researches.Research;
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
-import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
+import io.github.thebusybiscuit.slimefun4.api.researches.Research;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.config.Config;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 
@@ -26,54 +24,54 @@ public class HorizonsGears extends JavaPlugin implements SlimefunAddon {
         Config cfg = new Config(this);
 
         NamespacedKey categoryId = new NamespacedKey(this, "a_horizons_gears");
-        CustomItemStack categoryItem = new CustomItemStack(Material.NETHERITE_SWORD, "&bHorizon&8Reborned &3Pack.");
+        CustomItemStack categoryItem = new CustomItemStack(Material.NETHERITE_SWORD, "&b地平线&8装备");
 
         ItemGroup itemGroup = new ItemGroup(categoryId, categoryItem);
 
-        SlimefunItemStack CrystalitemStack = new SlimefunItemStack("HORIZON_CRYSTAL", Material.DIAMOND, "&7Horizon Crystal", "", "&3A shiny gem created by insane pressures.");
+        SlimefunItemStack CrystalitemStack = new SlimefunItemStack("HORIZON_CRYSTAL", Material.DIAMOND, "&7地平线水晶", "", "&3巨大的压力造就了这颗闪亮的宝石");
 
-        SlimefunItemStack HorizonSworditemStack = new SlimefunItemStack("HORIZON_SWORD", Material.DIAMOND_SWORD, "&bHorizons &3Sword", "", "&7A powerful sword enchanted deep in the sea.");
+        SlimefunItemStack HorizonSworditemStack = new SlimefunItemStack("HORIZON_SWORD", Material.DIAMOND_SWORD, "&b地平线&3之剑", "", "&7一把强大的剑在大海深处被施了魔法");
         HorizonSworditemStack.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 6);
         HorizonSworditemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 5);
 
-        SlimefunItemStack HorizonHelmetitemStack = new SlimefunItemStack("HORIZON_HELMET", Material.DIAMOND_HELMET, "&bHorizons &3Helmet", "", "&7A powerful helmet crafted deep within the nether.");
+        SlimefunItemStack HorizonHelmetitemStack = new SlimefunItemStack("HORIZON_HELMET", Material.DIAMOND_HELMET, "&b地平线&3头盔", "", "&7由下界深处制造的强大头盔");
         HorizonHelmetitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 6);
         HorizonHelmetitemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 5);
 
-        SlimefunItemStack HorizonChestitemStack = new SlimefunItemStack("HORIZON_CHESTPLATE", Material.DIAMOND_CHESTPLATE, "&bHorizons &3Chestplate", "", "&7A powerful chestplate crafted deep within the nether.");
+        SlimefunItemStack HorizonChestitemStack = new SlimefunItemStack("HORIZON_CHESTPLATE", Material.DIAMOND_CHESTPLATE, "&b地平线&3胸甲", "", "&7由下界深处制造的强大胸甲");
         HorizonChestitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 6);
         HorizonChestitemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 4);
 
-        SlimefunItemStack HorizonLeggingsitemStack = new SlimefunItemStack("HORIZON_LEGGINGS", Material.DIAMOND_LEGGINGS, "&bHorizons &3Leggings", "", "&7Powerful leggings crafted deep within the nether.");
+        SlimefunItemStack HorizonLeggingsitemStack = new SlimefunItemStack("HORIZON_LEGGINGS", Material.DIAMOND_LEGGINGS, "&b地平线&3护腿", "", "&7由下界深处制造的强大护腿");
         HorizonLeggingsitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 6);
         HorizonLeggingsitemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 4);
 
-        SlimefunItemStack HorizonBootsitemStack = new SlimefunItemStack("HORIZON_BOOTS", Material.DIAMOND_BOOTS, "&bHorizons &3Boots", "", "&7Powerful boots crafted deep within the nether.");
+        SlimefunItemStack HorizonBootsitemStack = new SlimefunItemStack("HORIZON_BOOTS", Material.DIAMOND_BOOTS, "&b地平线&3靴子", "", "&7由下界深处制造的强大靴子");
         HorizonBootsitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 6);
         HorizonBootsitemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 4);
 
 // rebirth stuff
-        SlimefunItemStack RebirthCrystalitemStack = new SlimefunItemStack("REBIRTH_CRYSTAL", Material.NETHERITE_INGOT, "&8Reborned Netherite Ingot", "", "&799% Pure Netherite, which only a master smelter could ever achieve.");
+        SlimefunItemStack RebirthCrystalitemStack = new SlimefunItemStack("REBIRTH_CRYSTAL", Material.NETHERITE_INGOT, "&8重铸下界合金锭", "", "&7只有冶炼大师才能达到99%的纯度");
 
-        SlimefunItemStack RebirthSworditemStack = new SlimefunItemStack("REBIRTH_SWORD", Material.NETHERITE_SWORD, "&7Rebirth &8Sword", "", "&4Mastercrafted");
+        SlimefunItemStack RebirthSworditemStack = new SlimefunItemStack("REBIRTH_SWORD", Material.NETHERITE_SWORD, "&7再生&8之剑", "", "&4精工制造");
         RebirthSworditemStack.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 6);
         RebirthSworditemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 5);
         RebirthSworditemStack.addUnsafeEnchantment(Enchantment.FIRE_ASPECT, 1);
 
-        SlimefunItemStack RebirthHelmetitemStack = new SlimefunItemStack("REBIRTH_HELMET", Material.NETHERITE_HELMET, "&7Rebirth &8Helmet", "", "&4Mastercrafted");
+        SlimefunItemStack RebirthHelmetitemStack = new SlimefunItemStack("REBIRTH_HELMET", Material.NETHERITE_HELMET, "&7再生&8头盔", "", "&4精工制造");
         RebirthHelmetitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 5);
         RebirthHelmetitemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 5);
         RebirthHelmetitemStack.addUnsafeEnchantment(Enchantment.THORNS, 1);
 
-        SlimefunItemStack RebirthChestitemStack = new SlimefunItemStack("REBIRTH_CHESTPLATE", Material.NETHERITE_CHESTPLATE, "&7Rebirth &8Chestplate", "", "&4Mastercrafted");
+        SlimefunItemStack RebirthChestitemStack = new SlimefunItemStack("REBIRTH_CHESTPLATE", Material.NETHERITE_CHESTPLATE, "&7再生&8胸甲", "", "&4精工制造");
         RebirthChestitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 6);
         RebirthChestitemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 5);
 
-        SlimefunItemStack RebirthLeggingsitemStack = new SlimefunItemStack("REBIRTH_LEGGINGS", Material.NETHERITE_LEGGINGS, "&7Rebirth &8Leggings", "", "&4Mastercrafted");
+        SlimefunItemStack RebirthLeggingsitemStack = new SlimefunItemStack("REBIRTH_LEGGINGS", Material.NETHERITE_LEGGINGS, "&7再生&8护腿", "", "&4精工制造");
         RebirthLeggingsitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 6);
         RebirthLeggingsitemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 5);
 
-        SlimefunItemStack RebirthBootsitemStack = new SlimefunItemStack("REBIRTH_BOOTS", Material.NETHERITE_BOOTS, "&7Rebirth &8Boots", "", "&4Mastercrafted");
+        SlimefunItemStack RebirthBootsitemStack = new SlimefunItemStack("REBIRTH_BOOTS", Material.NETHERITE_BOOTS, "&7再生&8靴子", "", "&4精工制造");
         RebirthBootsitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 6);
         RebirthBootsitemStack.addUnsafeEnchantment(Enchantment.DURABILITY, 5);
         RebirthBootsitemStack.addUnsafeEnchantment(Enchantment.PROTECTION_FALL, 1);
@@ -165,7 +163,7 @@ public class HorizonsGears extends JavaPlugin implements SlimefunAddon {
         SlimefunItem sfBItem = new SlimefunItem(itemGroup, HorizonBootsitemStack, RecipeType.ENHANCED_CRAFTING_TABLE, bootsRecipe);
         sfBItem.register(this);
 
-        SlimefunItem sfCItem = new SlimefunItem(itemGroup, CrystalitemStack, RecipeType.COMPRESSOR, crystalRecipe);
+        SlimefunItem sfCItem = new SlimefunItem(itemGroup, CrystalitemStack, RecipeType.SMELTERY, crystalRecipe);
         sfCItem.register(this);
 
         SlimefunItem sfItem = new SlimefunItem(itemGroup, HorizonSworditemStack, RecipeType.ENHANCED_CRAFTING_TABLE, swordRecipe);
@@ -185,29 +183,29 @@ public class HorizonsGears extends JavaPlugin implements SlimefunAddon {
         SlimefunItem RsfBItem = new SlimefunItem(itemGroup, RebirthBootsitemStack, RecipeType.ARMOR_FORGE, RbootsRecipe);
         RsfBItem.register(this);
 
-        SlimefunItem RsfCItem = new SlimefunItem(itemGroup, RebirthCrystalitemStack, RecipeType.COMPRESSOR, rebirthRecipe);
+        SlimefunItem RsfCItem = new SlimefunItem(itemGroup, RebirthCrystalitemStack, RecipeType.MAGIC_WORKBENCH, rebirthRecipe);
         RsfCItem.register(this);
 
         SlimefunItem RsfItem = new SlimefunItem(itemGroup, RebirthSworditemStack, RecipeType.MAGIC_WORKBENCH, RswordRecipe);
         RsfItem.register(this);
 
         NamespacedKey researchKey = new NamespacedKey(this, "crystal_research");
-        Research research = new Research(researchKey, 700, "Horizon Resources", 10);
+        Research research = new Research(researchKey, 700, "地平线资源", 10);
         research.addItems(CrystalitemStack);
         research.register();
 
         NamespacedKey researchKeyR = new NamespacedKey(this, "crystal_research_2");
-        Research researchR = new Research(researchKeyR, 703, "Better Horizon Resources", 40);
+        Research researchR = new Research(researchKeyR, 703, "更好的地平线资源", 40);
         researchR.addItems(RebirthCrystalitemStack);
         researchR.register();
 
         NamespacedKey researchKeySword = new NamespacedKey(this, "hsword_research");
-        Research researchSword = new Research(researchKeySword, 701, "Horizon Weapons", 15);
+        Research researchSword = new Research(researchKeySword, 701, "地平线武器", 15);
         researchSword.addItems(HorizonSworditemStack);
         researchSword.register();
 
         NamespacedKey researchKeyArmour = new NamespacedKey(this, "harmour_research");
-        Research researchArmour = new Research(researchKeyArmour, 702, "Horizon Protections", 50);
+        Research researchArmour = new Research(researchKeyArmour, 702, "地平线护甲", 50);
         researchArmour.addItems(HorizonHelmetitemStack);
         researchArmour.addItems(HorizonChestitemStack);
         researchArmour.addItems(HorizonLeggingsitemStack);
@@ -215,7 +213,7 @@ public class HorizonsGears extends JavaPlugin implements SlimefunAddon {
         researchArmour.register();
 
         NamespacedKey researchKeyArmourR = new NamespacedKey(this, "rarmour_research");
-        Research researchArmourR = new Research(researchKeyArmourR, 704, "Horizon Protections II", 75);
+        Research researchArmourR = new Research(researchKeyArmourR, 704, "地平线护甲 II", 75);
         researchArmourR.addItems(RebirthHelmetitemStack);
         researchArmourR.addItems(RebirthChestitemStack);
         researchArmourR.addItems(RebirthLeggingsitemStack);
@@ -223,7 +221,7 @@ public class HorizonsGears extends JavaPlugin implements SlimefunAddon {
         researchArmourR.register();
 
         NamespacedKey RresearchKeySword = new NamespacedKey(this, "rsword_research");
-        Research RresearchSword = new Research(RresearchKeySword, 705, "Horizon Weapons II", 35);
+        Research RresearchSword = new Research(RresearchKeySword, 705, "地平线武器 II", 35);
         RresearchSword.addItems(RebirthSworditemStack);
         RresearchSword.register();
         // Our item is now registered

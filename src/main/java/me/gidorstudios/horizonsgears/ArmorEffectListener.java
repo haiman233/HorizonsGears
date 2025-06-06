@@ -26,10 +26,10 @@ public class ArmorEffectListener implements Runnable {
     }
 
     private void checkArmor(Player player) {
-        checkArmorPiece(player,  Material.NETHERITE_HELMET, PotionEffectType.WATER_BREATHING, 1, "&7Rebirth &8Helmet", 0);
-        checkArmorPiece(player,  Material.NETHERITE_CHESTPLATE, PotionEffectType.INCREASE_DAMAGE, 2, "&7Rebirth &8Chestplate", 1);
-        checkArmorPiece(player,  Material.NETHERITE_LEGGINGS, PotionEffectType.JUMP, 1, "&7Rebirth &8Leggings", 2);
-        checkArmorPiece(player,  Material.NETHERITE_BOOTS, PotionEffectType.SPEED, 2, "&7Rebirth &8Boots", 3);
+        checkArmorPiece(player,  Material.NETHERITE_HELMET, PotionEffectType.WATER_BREATHING, 1, "&7再生&8头盔", 0);
+        checkArmorPiece(player,  Material.NETHERITE_CHESTPLATE, PotionEffectType.INCREASE_DAMAGE, 2, "&7再生&8胸甲", 1);
+        checkArmorPiece(player,  Material.NETHERITE_LEGGINGS, PotionEffectType.JUMP, 1, "&7再生&8护腿", 2);
+        checkArmorPiece(player,  Material.NETHERITE_BOOTS, PotionEffectType.SPEED, 2, "&7再生&8靴子", 3);
     }
 
     private void checkArmorPiece(Player player, Material armorType, PotionEffectType effectType, int amplifier, String armorName, int armorSlot) {
